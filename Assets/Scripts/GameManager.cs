@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    public GameState gameState;
     public static GameManager instance;
     public int score = 0;
 
@@ -24,4 +25,10 @@ public class GameManager : MonoBehaviour
         score += 1;
     }
 
+    public enum GameState
+    {
+        GAMESTART,
+        GAMEOVER,
+        GAMERUNNING
+    }
 }

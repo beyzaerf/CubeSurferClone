@@ -1,12 +1,33 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    public GameState gameState;
+    public static GameState gameState = GameState.GAMESTART;
     public static GameManager instance;
     public int score = 0;
+    public static Action<int> pointEvent;
+
+    private void Start()
+    {
+        pointEvent += addPoint;
+    }
+
+    //private void Update()
+    //{
+    //    switch (gameState)
+    //    {
+    //        case GameState.GAMERUNNING:
+    //            break;
+    //        case GameState.GAMESTART:
+    //            break;
+    //        case GameState.GAMEOVER:
+    //            break;
+
+    //    }
+    //}
 
     // Singleton 
     private void Awake()
@@ -17,10 +38,10 @@ public class GameManager : MonoBehaviour
             DontDestroyOnLoad(this);
         }
         else
-            Destroy(this.gameObject);
+            Destroy(gameObject);
     }
 
-    public void addPoint()
+    public void addPoint(int i)
     {
         score += 1;
     }

@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class FollowCamera : MonoBehaviour
 {
+    private Vector3 playerPosition;
     public Transform cameraFollow;
-    [SerializeField] float height = 4.3f;
-    [SerializeField] float horizontalPosition = 2.7f;
 
-    void Update()
+    void FixedUpdate()
     {
-        transform.position = new Vector3(horizontalPosition, height, cameraFollow.position.z - 7f);    
+        playerPosition = new Vector3(cameraFollow.position.x +2f, 6f, cameraFollow.position.z - 7f);
+        transform.position = Vector3.Lerp(transform.position, playerPosition, 0.1f);
     }
 
 }

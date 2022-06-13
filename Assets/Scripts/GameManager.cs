@@ -5,51 +5,25 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    public static GameState gameState = GameState.GAMESTART;
-    public static GameManager instance;
-    public int score = 0;
-    public static Action<int> pointEvent;
+    public GameState gameState;
+    private static GameManager instance;
 
-    private void Start()
-    {
-        pointEvent += addPoint;
-    }
-
-    //private void Update()
-    //{
-    //    switch (gameState)
-    //    {
-    //        case GameState.GAMERUNNING:
-    //            break;
-    //        case GameState.GAMESTART:
-    //            break;
-    //        case GameState.GAMEOVER:
-    //            break;
-
-    //    }
-    //}
+    public static GameManager Instance { get => instance; set => instance = value; }
 
     // Singleton 
     private void Awake()
     {
-        if (instance is null)
+        if (Instance is null)
         {
-            instance = this;
-            DontDestroyOnLoad(this);
+            Instance = this;
         }
-        else
-            Destroy(gameObject);
+       
     }
-
-    public void addPoint(int i)
-    {
-        score += 1;
-    }
-
-    public enum GameState
-    {
-        GAMESTART,
-        GAMEOVER,
-        GAMERUNNING
-    }
+}
+public enum GameState
+{
+    GameStart,
+    GameOver,
+    GameRunning,
+    GameWon
 }

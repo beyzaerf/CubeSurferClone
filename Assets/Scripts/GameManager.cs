@@ -7,7 +7,6 @@ public class GameManager : MonoBehaviour
 {
     public GameState gameState;
     private static GameManager instance;
-
     public static GameManager Instance { get => instance; set => instance = value; }
 
     // Singleton 
@@ -17,7 +16,6 @@ public class GameManager : MonoBehaviour
         {
             Instance = this;
         }
-       
     }
 }
 public enum GameState

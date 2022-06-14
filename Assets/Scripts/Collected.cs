@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Collected : MonoBehaviour
 {
@@ -17,6 +18,7 @@ public class Collected : MonoBehaviour
             transform.parent = null;
             if (pickUp.transform.childCount <= 1)
             {
+                Buttons.Instance.ReplayButton.gameObject.SetActive(true);
                 GameManager.Instance.gameState = GameState.GameOver;
                 Debug.Log(GameManager.Instance.gameState);
             }
@@ -30,7 +32,7 @@ public class Collected : MonoBehaviour
             if(pickUp.transform.childCount <= 1)
             {
                 GameManager.Instance.gameState = GameState.GameWon;
-                Debug.Log(GameManager.Instance.gameState);
+                Buttons.Instance.NextButton.gameObject.SetActive(true);
             }
         }
     }

@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Movement : MonoBehaviour
 {
-    GameManager gameManager;
     [SerializeField] float speed;
     private Rigidbody rigidBody;
     private Transform playerObject;
@@ -12,13 +11,12 @@ public class Movement : MonoBehaviour
     void Start()
     {
         rigidBody = GetComponent<Rigidbody>();
-        gameManager = GameManager.Instance;
         playerObject = ObjectManager.Instance.PlayerObject;
 
     }
     private void FixedUpdate()
     {
-        if (gameManager.gameState != GameState.GameRunning)
+        if (GameManager.Instance.GameState != GameState.GameRunning)
         {
             return;
         }

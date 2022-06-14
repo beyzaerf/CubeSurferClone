@@ -9,19 +9,17 @@ using UnityEngine;
 public class Control : MonoBehaviour
 {
     private Vector3 playerPosition;
-    GameManager gameManager;
     private Transform playerObject;
 
     private void Start()
     {
-        gameManager = GameManager.Instance;
         playerObject = ObjectManager.Instance.PlayerObject;
     }
     void Update()
     {
         if(Input.GetMouseButton(0))
         {
-            if (gameManager.gameState != GameState.GameRunning)
+            if (GameManager.Instance.GameState != GameState.GameRunning)
             {
                 return;
             }

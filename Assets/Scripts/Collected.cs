@@ -18,9 +18,8 @@ public class Collected : MonoBehaviour
             transform.parent = null;
             if (pickUp.transform.childCount <= 1)
             {
-                Buttons.Instance.ReplayButton.gameObject.SetActive(true);
-                GameManager.Instance.gameState = GameState.GameOver;
-                Debug.Log(GameManager.Instance.gameState);
+                GameManager.Instance.GameFail();
+                GameManager.Instance.GameState = GameState.GameOver;
             }
         }
         else if (collision.gameObject.CompareTag("Multiplier")) // eðer multipliera vurursa 
@@ -28,11 +27,10 @@ public class Collected : MonoBehaviour
             pickUp.DiamondCount *= 2;
             transform.parent = null;
             collision.gameObject.tag = "Untagged";
-            Debug.Log(pickUp.DiamondCount);
             if(pickUp.transform.childCount <= 1)
             {
-                GameManager.Instance.gameState = GameState.GameWon;
-                Buttons.Instance.NextButton.gameObject.SetActive(true);
+                GameManager.Instance.GameState = GameState.GameWon;
+                GameManager.Instance.GameWin();
             }
         }
     }

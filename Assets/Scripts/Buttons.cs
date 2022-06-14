@@ -5,15 +5,8 @@ using UnityEngine.UI;
 
 public class Buttons : MonoBehaviour
 {
-    [SerializeField] private Button playButton;
-    [SerializeField] private Button nextButton;
-    [SerializeField] private Button replayButton;
-    LevelManager levelManager;
-    private static Buttons instance;
-
-    public Button NextButton { get => nextButton; set => nextButton = value; }
+    private static Buttons instance;    
     public static Buttons Instance { get => instance; set => instance = value; }
-    public Button ReplayButton { get => replayButton; set => replayButton = value; }
 
     private void Awake()
     {
@@ -23,22 +16,12 @@ public class Buttons : MonoBehaviour
 
     private void Start()
     {
-        NextButton.gameObject.SetActive(false);
-        ReplayButton.gameObject.SetActive(false);
+        ObjectManager.Instance.NextButton.gameObject.SetActive(false);
+        ObjectManager.Instance.RetryButton.gameObject.SetActive(false);
     }
     public void OnPlayGame()
     {
-        GameManager.Instance.gameState = GameState.GameRunning;
-        playButton.gameObject.SetActive(false);
+        GameManager.Instance.GameState = GameState.GameRunning;
+        ObjectManager.Instance.PlayButton.gameObject.SetActive(false);
     }
-    
-    public void OnNextButton() 
-    {
-        levelManager.ActiveLevel++;
-    }
-    public void OnReplayButton()
-    {
-        levelManager.SpawnLevel();
-    }
-
 }

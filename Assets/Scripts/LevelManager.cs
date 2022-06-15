@@ -19,15 +19,23 @@ public class LevelManager : MonoBehaviour
     }
     private void Start()
     {
-        //PlayerPrefs.DeleteAll();
         levelID = PlayerPrefs.GetInt("LevelInfo", 0);
-        Instantiate(levelPrefabs[levelID]); //spawns the level prefab here
+        if(levelID <= 2)
+        {
+            Instantiate(levelPrefabs[levelID]); //spawns the level prefab here
+        }
+
+        else
+        {
+            levelID = 0;
+            Instantiate(levelPrefabs[levelID]);
+        }
 
     }
     public void SetLevel()
     {
         levelID++;
         PlayerPrefs.SetInt("LevelInfo", levelID);
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex); //Reloads the scene
     }
 }

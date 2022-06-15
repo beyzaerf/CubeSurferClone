@@ -8,13 +8,6 @@ using UnityEngine;
 
 public class Control : MonoBehaviour
 {
-    private Vector3 playerPosition;
-    private Transform playerObject;
-
-    private void Start()
-    {
-        playerObject = ObjectManager.Instance.PlayerObject;
-    }
     void Update()
     {
         if(Input.GetMouseButton(0))

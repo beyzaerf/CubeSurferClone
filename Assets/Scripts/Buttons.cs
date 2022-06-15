@@ -16,12 +16,12 @@ public class Buttons : MonoBehaviour
 
     private void Start()
     {
-        ObjectManager.Instance.NextButton.gameObject.SetActive(false);
-        ObjectManager.Instance.RetryButton.gameObject.SetActive(false);
+        ObjectManager.Instance.NextButton.SetActive(false);
+        ObjectManager.Instance.RetryButton.SetActive(false);
     }
     public void OnPlayGame()
     {
         GameManager.Instance.GameState = GameState.GameRunning;
-        ObjectManager.Instance.PlayButton.gameObject.SetActive(false);
+        ObjectManager.Instance.PlayButton.SetActive(false);
     }
 }

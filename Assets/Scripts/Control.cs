@@ -2,40 +2,48 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-#if UNITY_EDITOR
-
 //This script allows the user to play with the mouse or phone.
-
 public class Control : MonoBehaviour
 {
-    void Update()
+    Rigidbody rb;
+    Vector3 firstPosition;
+    Vector3 lastPosition;
+    Vector3 difference;
+    [SerializeField] Camera ortho;
+    private void Start()
     {
-        if(Input.GetMouseButton(0))
+        rb = GetComponent<Rigidbody>();
+    }
+    private void Update()
+    {
+        transform.position = new Vector3(Mathf.Clamp(transform.position.x, -2, 2), transform.position.y, transform.position.z);
+        firstPosition = Vector3.Lerp(firstPosition, ortho.ScreenToWorldPoint(Input.mousePosition), 0.3f);
+        if (Input.GetMouseButtonDown(0))
         {
+            firstPosition = ortho.ScreenToWorldPoint(Input.mousePosition);
+        }
+        if (Input.GetMouseButtonUp(0))
+        {
+            difference = Vector3.zero;
+        }
+        if (Input.GetMouseButton(0))
+        {
+            lastPosition = ortho.ScreenToWorldPoint(Input.mousePosition);
+            difference = lastPosition - firstPosition;
+            difference *= 70;
+
             if (GameManager.Instance.GameState != GameState.GameRunning)
             {
                 return;
             }
-                transform.position = new Vector3(Mathf.Clamp(transform.position.x + Input.GetAxis("Mouse X"), -2f, 2f), transform.position.y, transform.position.z);
+
         }
     }
-}
-
-#else
-
-public class Control : MonoBehaviour
-{
-    private void Update()
+    void FixedUpdate()
     {
-        if (Input.touchCount > 0)
-        {
-            if (gameManager.gameState != GameState.GameRunning)
-            {
-                return;
-            }
-            Touch touch = Input.GetTouch(0);
-            transform.position = new Vector3(Mathf.Clamp(transform.position.x + Input.GetTouch(0).position.x, -2f, 2f), transform.position.y + transform.position.z);
-        }
+        
+        //Debug.Log(firstPosition.x);
+        rb.velocity = Vector3.Lerp(rb.velocity, new Vector3(difference.x, 0, 0), 0.3f);
+        
     }
 }
-#endif

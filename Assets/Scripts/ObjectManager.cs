@@ -12,7 +12,7 @@ public class ObjectManager : MonoBehaviour
     [SerializeField] private GameObject nextButton;
     [SerializeField] private GameObject retryButton;
     [SerializeField] private Animator animator;
-    [SerializeField] private Transform camera;
+    [SerializeField] private Transform camera1;
     [SerializeField] private TextMeshProUGUI scoreText;
 
 
@@ -23,7 +23,7 @@ public class ObjectManager : MonoBehaviour
     public GameObject PlayButton { get => playButton; set => playButton = value; }
     public Animator Animator { get => animator; set => animator = value; }
     public TextMeshProUGUI ScoreText { get => scoreText; set => scoreText = value; }
-    public Transform Camera { get => camera; set => camera = value; }
+    public Transform Camera { get => camera1; set => camera1 = value; }
 
     private void Awake()
     {

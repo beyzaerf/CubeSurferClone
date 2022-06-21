@@ -6,21 +6,25 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    private GameState gameState;
+    [SerializeField] private GameState gameState;
+    private ObjectManager objectManager;
     private static GameManager instance;
     public Action GameWin;
     public Action GameFail;
-    
+    [SerializeField] private GameObject playButton;
     public static GameManager Instance { get => instance; set => instance = value; }
     public GameState GameState { get => gameState; set => gameState = value; }
+    public bool GameExecuted { get => gameExecuted; set => gameExecuted = value; }
 
+    private bool gameExecuted;
     // Singleton 
     private void Awake()
     {
-        if (Instance is null)
+        if (Instance == null)
         {
             Instance = this;
         }
+        objectManager = ObjectManager.Instance;
     }
     public void NextLevel()
     {
@@ -37,11 +41,17 @@ public class GameManager : MonoBehaviour
     }
     private void GameWinFunction()
     {
-        ObjectManager.Instance.NextButton.SetActive(true);
+        objectManager.NextButton.SetActive(true);
     }
     private void GameFailFunction()
     {
-        ObjectManager.Instance.RetryButton.SetActive(true);
+        objectManager.RetryButton.SetActive(true);
+    }
+    public void GameStartFunction()
+    {
+        gameState = GameState.GameRunning;
+        playButton.SetActive(false);
+        GameExecuted = true;
     }
 }
 

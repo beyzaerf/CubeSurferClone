@@ -22,14 +22,12 @@ public class FollowCamera : MonoBehaviour
 
     public void CameraZoomOut()
     {
-        //transform.DOMove(new Vector3(transform.position.x, transform.position.y + 0.5f, transform.position.z - 0.3f), 0.3f);
         offset.y += 0.5f;
         offset.z -= 0.3f;
 
     }
     public void CameraZoomIn()
     {
-        //transform.DOMove(new Vector3(transform.position.x, transform.position.y - 0.5f, transform.position.z + 0.3f), 0.3f);
         offset.y -= 0.5f;
         offset.z += 0.3f;
     }

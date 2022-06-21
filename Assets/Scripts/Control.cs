@@ -9,6 +9,7 @@ public class Control : MonoBehaviour
     Vector3 firstPosition;
     Vector3 lastPosition;
     Vector3 difference;
+    [SerializeField] float speed;
     [SerializeField] Camera ortho;
     private void Start()
     {
@@ -41,9 +42,13 @@ public class Control : MonoBehaviour
     }
     void FixedUpdate()
     {
-        
-        //Debug.Log(firstPosition.x);
-        rb.velocity = Vector3.Lerp(rb.velocity, new Vector3(difference.x, 0, 0), 0.3f);
+        if (GameManager.Instance.GameState != GameState.GameRunning)
+        {
+            rb.velocity = Vector3.zero;
+            return;
+        }
+            
+        rb.velocity = Vector3.Lerp(rb.velocity, new Vector3(difference.x, 0, speed), 0.3f);
         
     }
 }

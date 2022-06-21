@@ -3096,6 +3096,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 374922384397089092, guid: f143aac98a76dd74285751ada63d0969, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 716798283206537880, guid: f143aac98a76dd74285751ada63d0969, type: 3}
       propertyPath: m_Name
       value: Multiplier (5)
@@ -3157,6 +3161,10 @@ PrefabInstance:
     - target: {fileID: 196263449344534562, guid: f143aac98a76dd74285751ada63d0969, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 374922384397089092, guid: f143aac98a76dd74285751ada63d0969, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 716798283206537880, guid: f143aac98a76dd74285751ada63d0969, type: 3}
       propertyPath: m_Name
@@ -3220,6 +3228,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 374922384397089092, guid: f143aac98a76dd74285751ada63d0969, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 716798283206537880, guid: f143aac98a76dd74285751ada63d0969, type: 3}
       propertyPath: m_Name
       value: Multiplier (1)
@@ -3281,6 +3293,10 @@ PrefabInstance:
     - target: {fileID: 196263449344534562, guid: f143aac98a76dd74285751ada63d0969, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 374922384397089092, guid: f143aac98a76dd74285751ada63d0969, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 716798283206537880, guid: f143aac98a76dd74285751ada63d0969, type: 3}
       propertyPath: m_Name
@@ -3344,6 +3360,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 374922384397089092, guid: f143aac98a76dd74285751ada63d0969, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 716798283206537880, guid: f143aac98a76dd74285751ada63d0969, type: 3}
       propertyPath: m_Name
       value: Multiplier
@@ -3405,6 +3425,10 @@ PrefabInstance:
     - target: {fileID: 196263449344534562, guid: f143aac98a76dd74285751ada63d0969, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 374922384397089092, guid: f143aac98a76dd74285751ada63d0969, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 716798283206537880, guid: f143aac98a76dd74285751ada63d0969, type: 3}
       propertyPath: m_Name

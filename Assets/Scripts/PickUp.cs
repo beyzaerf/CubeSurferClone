@@ -10,13 +10,15 @@ public class PickUp : MonoBehaviour
     private int cubeCount = 1;
     private GameObject lastCollected = null;
     private int diamondCount = 0;
+    private ObjectManager objectManager;
 
     public int DiamondCount { get => diamondCount; set => diamondCount = value; }
 
     private void Start()
     {
         charTransform = transform.GetChild(0);
-        followCamera = ObjectManager.Instance.Camera.GetComponent<FollowCamera>();
+        objectManager = ObjectManager.Instance;
+        followCamera = objectManager.Camera.GetComponent<FollowCamera>();
     }
     private void OnTriggerEnter(Collider collision)
     {
@@ -26,6 +28,7 @@ public class PickUp : MonoBehaviour
                 collision.transform.position = new Vector3(transform.position.x, transform.position.y + 1, transform.position.z);
             else
                 collision.transform.position = new Vector3(transform.position.x, lastCollected.transform.position.y + 1, transform.position.z);
+            transform.GetChild(2).SetAsLastSibling();
             charTransform.position = new Vector3(transform.position.x, collision.transform.position.y + 0.5f, transform.position.z);
             collision.transform.parent = transform;
             lastCollected = collision.gameObject;
@@ -35,8 +38,6 @@ public class PickUp : MonoBehaviour
             {
                 followCamera.CameraZoomOut();
             }
-
-
         }
         else if (collision.gameObject.CompareTag("Obstacle")) //Losing cubes from obstacle
         {
@@ -50,7 +51,7 @@ public class PickUp : MonoBehaviour
         else if (collision.gameObject.CompareTag("Diamond")) //Picking up diamonds
         {
             diamondCount++;
-            ObjectManager.Instance.ScoreText.text = diamondCount.ToString();
+            objectManager.ScoreText.text = diamondCount.ToString();
             Destroy(collision.gameObject);
         }
         
